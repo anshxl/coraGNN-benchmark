@@ -1,4 +1,5 @@
-import argparse
+import os
+import psutil
 import random
 import numpy as np
 import torch
@@ -127,10 +128,25 @@ def main(config):
 
         best_val_acc = 0.0
         for epoch in range(1, epochs + 1):
+            # Reset GPU stats, if using CUDA
+            if torch.cuda.is_available():
+                torch.cuda.reset_peak_memory_stats()
             loss = train(model, data, optimizer)
             train_acc = evaluate(model, data, data.train_mask)
             val_acc = evaluate(model, data, data.val_mask)
 
+            # Memory Logging
+            # GPU peak memory usage
+            if torch.cuda.is_available():
+                peak_mb = torch.cuda.max_memory_allocated() / (1024 ** 2)
+            else:
+                peak_mb = 0
+            mlflow.log_metric("gpu_peak_mem_mb", peak_mb, step=epoch)
+
+            # CPU memory usage
+            rss = psutil.Process(os.getpid()).memory_info().rss / (1024 ** 2)  # in MB
+            mlflow.log_metric("cpu_rss_mb", rss, step=epoch)
+            
             mlflow.log_metrics({
                 "loss": loss,
                 "train_acc": train_acc,
