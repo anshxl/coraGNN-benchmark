@@ -1,0 +1,20 @@
+data:
+  root_dir: data
+  name: Cora
+
+model:
+  type: sage
+  hidden_size: 16
+  dropout: 0.5
+  gat_heads: 8
+
+training:
+  lr: 0.01
+  weight_decay: 0.0005
+  epochs: 200
+  seed: 42
+  ckpt_path_template: "checkpoints/{model}.pt"
+  interval: 10
+
+mlflow:
+  experiment: Cora-GNN

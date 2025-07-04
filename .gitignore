@@ -1,0 +1,9 @@
+# venv
+venv/
+
+# Python cache
+__pycache__/
+
+.DS_Store
+
+specs.md
