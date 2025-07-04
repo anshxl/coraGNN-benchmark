@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/AnshulSrivastava/Desktop/CoraGNN-Benchmark/mlruns/665810378593591045/374c070774644046a3f317ba89ed292b/artifacts
+end_time: 1751586226075
+entry_point_name: ''
+experiment_id: '665810378593591045'
+lifecycle_stage: active
+run_id: 374c070774644046a3f317ba89ed292b
+run_name: capable-auk-759
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751586215182
+status: 3
+tags: []
+user_id: AnshulSrivastava
