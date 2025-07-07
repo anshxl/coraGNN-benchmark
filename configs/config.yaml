@@ -3,7 +3,7 @@ data:
   name: Cora
 
 model:
-  type: sage
+  type: gat
   hidden_size: 16
   dropout: 0.5
   gat_heads: 8
