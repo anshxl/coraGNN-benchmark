@@ -13,3 +13,6 @@ data/
 
 # model checkpoints
 checkpoints/
+
+# logs
+mlruns/
